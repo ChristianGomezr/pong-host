@@ -6,9 +6,14 @@
 
   <h1> Overcomplicated Pong </h1>
   <h4>Play against your computer</h4>
+  <p> 
+    Commands: dash up, dash down, up, down, foward, back
+  </p>
 </center>
   <style>
-
+    p {
+      color: rgb(33, 255, 181);
+    }
     h1 {
       color: rgb(20, 255, 118);
     } 
@@ -45,11 +50,43 @@
     var new_text = input_field.value;
     console.log(new_text);
     new_text = new_text.toLowerCase();
+    //following these if statements will be the text inputs that perform actions
     if(new_text == "up") {
-      alert("The text input is up");
+
+  
+      paddle.y -= 15;
+      input_field.value = "";
+    }
+    if(new_text == "down") {
+      paddle.y += 15;
+  
+      input_field.value = "";
+    }
+    if(new_text == "dash down") {
+      paddle.y += 50;
+  
+      input_field.value = "";
+    }
+    if(new_text == "dash up") {
+
+  
+      paddle.y -= 50;
+      input_field.value = "";
+    }
+    if(new_text == "back") {
+
+      
+      paddle.x -= 15;
+      input_field.value = "";
+    }
+    if(new_text == "foward") {
+
+      
+      paddle.x += 15;
       input_field.value = "";
     }
 
+  }
 
 
 
@@ -202,9 +239,10 @@
     draw();
     
   </script>
-
-<span id = "an_id"> </span> <br>
-<label> Movement Input: </label><input id="text_input" type="text" oninput="update_text()"></input> </label>
-
+  <center>
+    <span id = "an_id"> </span> <br>
+    <div><p> Movement Input: </p></div>
+    <input id="text_input" type="text" oninput="update_text()"></input> </label>
+  </center>
 </body>
 </html>
