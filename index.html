@@ -4,11 +4,24 @@
   <title>Pong Game</title>
 <center>
   <h1> Overcomplicated Pong </h1>
-  <h4>play against your computer</h4>
+  <h4>Play against your computer</h4>
 </center>
   <style>
+
+    h1 {
+      color: rgb(20, 255, 118);
+    }
+
+    h4{
+      color: rgb(20, 255, 118);
+    }
+
+     body {
+      background-color: black;
+     }
     canvas {
-      border: 1px solid #000;
+      border: 4px solid #ff13e0;
+      background-color: rgb(0, 0, 0);
       display: block;
       margin: 0 auto;
     }
@@ -52,7 +65,7 @@
     function drawBall() {
       ctx.beginPath();
       ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#FFFFFF";
       ctx.fill();
       ctx.closePath();
     }
@@ -60,7 +73,7 @@
     //sets up the parameters for the paddles one thing i note here is that i can make literally any 
     // possible object the paddle do i want to do that rn? no. maybe later.
     function drawPaddle(x, y) {
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#13EAFF";
       ctx.fillRect(x, y, paddle.width, paddle.height);
     }
 
