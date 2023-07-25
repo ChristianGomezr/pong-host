@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>Pong Game</title>
-
-  <h1>PONG GAME 🏓 </h1>
+<center>
+  <h1> Overcomplicated Pong </h1>
   <h4>play against your computer</h4>
-  
+</center>
   <style>
     canvas {
       border: 1px solid #000;
@@ -28,7 +28,7 @@
       dx: 5,
       dy: 5,
     };
-
+    // the paddle here would be the player use paddle as a directory to player movement
     const paddle = {
       width: 10,
       height: 100,
@@ -36,7 +36,8 @@
       y: canvas.height / 2 - 50,
       dy: 10,
     };
-
+    // we could try to make the opponent strong but at this point without momentum scripts its 
+    // at the best state it could be seeing as the ball physics are extremely basic
     const opponent = {
       width: 10,
       height: 100,
@@ -56,7 +57,8 @@
       ctx.closePath();
     }
     
-
+    //sets up the parameters for the paddles one thing i note here is that i can make literally any 
+    // possible object the paddle do i want to do that rn? no. maybe later.
     function drawPaddle(x, y) {
       ctx.fillStyle = "#000";
       ctx.fillRect(x, y, paddle.width, paddle.height);
@@ -64,6 +66,10 @@
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      //note that in the original setup function the paremeters are x and y 
+      // in order to make them two separate paddles adding the directories like paddle. and opponent. 
+      //attached to the x and y 
 
       drawBall();
       drawPaddle(paddle.x, paddle.y);
@@ -80,6 +86,10 @@
       }
 
       // Check collision with player paddle
+
+      // The ball.x - ball.radius is essentially checking the left side of the ball with the right 
+      // side of the paddle
+
       if (
         ball.x - ball.radius < paddle.x + paddle.width &&
         ball.y > paddle.y &&
@@ -89,6 +99,7 @@
       }
 
       // Check collision with opponent paddle
+      // measure the 
       if (
         ball.x + ball.radius > opponent.x &&
         ball.y > opponent.y &&
@@ -106,7 +117,7 @@
         resetBall();
       }
 
-      // Move the opponent paddle towards the ball's y position
+      //Move the opponent paddle towards the ball's y position
       if (ball.y < opponent.y + opponent.height / 2) {
         opponent.y -= opponent.dy;
       } else if (ball.y > opponent.y + opponent.height / 2) {
@@ -129,18 +140,12 @@
     // testing certain parts/functions
     
     
-    // if (ball.y < paddle.y + paddle.height / 2) {
-    //     paddle.y -= paddle.dy;
-    //   } else if (ball.y > paddle.y + paddle.height / 2) {
-    //     paddle.y += paddle.dy;
-    //   }
-
-
+  
          document.addEventListener('keydown', (event) => {
-         if (event.key === 'ArrowUp' && playerY > 0) {
-           playerY -= 10;
-         } else if (event.key === 'ArrowDown' && playerY + paddleHeight < canvas.height) {
-           playerY += 10;
+         if (event.key === 'ArrowUp' && paddle.y> 0) {
+           paddle.y -= 10;
+         } else if (event.key === 'ArrowDown' && paddle.y + paddle.height < canvas.height) {
+           paddle.y += 10;
          }
          });
     
