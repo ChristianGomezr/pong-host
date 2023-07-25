@@ -3,6 +3,7 @@
 <head>
   <title>Pong Game</title>
 <center>
+
   <h1> Overcomplicated Pong </h1>
   <h4>Play against your computer</h4>
 </center>
@@ -10,7 +11,8 @@
 
     h1 {
       color: rgb(20, 255, 118);
-    }
+    } 
+    
 
     h4{
       color: rgb(20, 255, 118);
@@ -31,6 +33,26 @@
   <canvas id="pongCanvas" width="800" height="400"></canvas>
 
   <script>
+
+//loads in everything before doing any javascript even though thats kinda already done with the
+//script tag but whatever
+  document.addEventListener("DOMContentLoaded", function() {
+
+  })
+
+  function update_text() {
+    var input_field = document.getElementById("text_input");
+    var new_text = input_field.value;
+    console.log(new_text);
+    new_text = new_text.toLowerCase();
+    if(new_text == "up") {
+      alert("The text input is up");
+      input_field.value = "";
+    }
+
+
+
+
     const canvas = document.getElementById("pongCanvas");
     const ctx = canvas.getContext("2d");
 
@@ -72,6 +94,7 @@
     
     //sets up the parameters for the paddles one thing i note here is that i can make literally any 
     // possible object the paddle do i want to do that rn? no. maybe later.
+    // i wonder what would happen if i made the paddle a circle lol
     function drawPaddle(x, y) {
       ctx.fillStyle = "#13EAFF";
       ctx.fillRect(x, y, paddle.width, paddle.height);
@@ -96,6 +119,7 @@
       if (ball.y + ball.dy < ball.radius || ball.y + ball.dy > 
       canvas.height - ball.radius) {
       ball.dy = -ball.dy;
+      //this can have a sound effect right here some
       }
 
       // Check collision with player paddle
@@ -109,6 +133,7 @@
         ball.y < paddle.y + paddle.height
       ) {
         ball.dx = -ball.dx;
+        //insert sound effect
       }
 
       // Check collision with opponent paddle
@@ -119,15 +144,18 @@
         ball.y < opponent.y + opponent.height
       ) {
         ball.dx = -ball.dx;
+        //insert sound effect
       }
 
       // Score a point if the ball goes off the screen
       if (ball.x < 0) {
         scoreOpponent++;
         resetBall();
+        //insert sound effect
       } else if (ball.x > canvas.width) {
         scorePlayer++;
         resetBall();
+        //insert sound effect
       }
 
       //Move the opponent paddle towards the ball's y position
@@ -153,28 +181,30 @@
     // testing certain parts/functions
     
     
-  
-         document.addEventListener('keydown', (event) => {
-         if (event.key === 'ArrowUp' && paddle.y> 0) {
-           paddle.y -= 10;
-         } else if (event.key === 'ArrowDown' && paddle.y + paddle.height < canvas.height) {
-           paddle.y += 10;
-         }
-         });
+      //i adjusted the reference so that variables work with this design
+      
+        //  document.addEventListener('keydown', (event) => {
+        //  if (event.key === 'ArrowUp' && paddle.y> 0) {
+        //    paddle.y -= 10;
+        //  } else if (event.key === 'ArrowDown' && paddle.y + paddle.height < canvas.height) {
+        //    paddle.y += 10;
+        //  }
+        //  });
+    // in this case the event key was used in an if statement i think all i need to do is find some 
+    //syntax that 
     
     
-
     
     
       
 
-
-
-    
-    
-
+      
     draw();
     
   </script>
+
+<span id = "an_id"> </span> <br>
+<label> Movement Input: </label><input id="text_input" type="text" oninput="update_text()"></input> </label>
+
 </body>
 </html>
