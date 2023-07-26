@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <title>Pong Game</title>
 <center>
 
   <h1> Overcomplicated Pong </h1>
-  <h4>Play against your computer</h4>
   <p> 
-    Movement Commands: dash up, dash down, up, down, foward, back
+    Movement Commands: dash up, dash down, up, down, foward, back, and <p>accelerate(do at your own risk)</p>
   </p>
 </center>
   <style>
@@ -43,11 +43,16 @@
   </style>
 </head>
 <body>
+ 
+  <audio controls autoplay>
+    <source src="music files/funny song.mp3" type="audio/mpeg"></source>
+   </audio>
+
   <canvas id="pongCanvas" width="800" height="400"></canvas>
-
+  
   <script>
-
-//loads in everything before doing any javascript even though thats kinda already done with the
+    
+    //loads in everything before doing any javascript even though thats kinda already done with the
 //script tag but whatever
   document.addEventListener("DOMContentLoaded", function() {
 
@@ -93,8 +98,22 @@
       paddle.x += 15;
       input_field.value = "";
     }
+    if(new_text == "accelerate") {
+      if (ball.y < paddle.y + paddle.height / 2) {
+        paddle.y -= paddle.dy;
+        input_field.value = "";
+      } else if (ball.y > paddle.y + paddle.height / 2) {
+        paddle.y += paddle.dy;
+        input_field.value = "";
+      }
 
-  }
+       requestAnimationFrame(draw);
+    }
+          
+      
+      
+    }
+  
 
 
 
