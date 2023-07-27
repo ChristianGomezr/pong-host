@@ -203,6 +203,7 @@
         ball.y > paddle.y &&
         ball.y < paddle.y + paddle.height
       ) {
+        document.getElementById("bread").play();
         ball.dx = -ball.dx;
         
         //insert sound effect
