@@ -43,8 +43,15 @@
   </style>
 </head>
 <body>
+
+  <center>
+    <button id="startButton">Start Game</button>
+  </center>
+</body>
+
+
   <audio id="bread" preload>
-    <source src="impact.mp3" type="audio/mp3"></source>
+    <source src="crit.mp3" type="audio/mp3"></source>
   </audio>
 
 
@@ -59,6 +66,16 @@
   
   <script>
     
+// Function to start the game
+function startGame() {
+    document.getElementById("startButton").style.display = "none"; // Hide the Start button
+    draw(); // Start the game loop
+  }
+
+  // Add event listener to the Start button
+  document.getElementById("startButton").addEventListener("click", startGame
+
+
     //another test format for playing sfx
 
     // function gun_bang() {
@@ -294,9 +311,6 @@
     
     
     
-    
-      
-
       
     draw();
     
