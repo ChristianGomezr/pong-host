@@ -43,10 +43,15 @@
   </style>
 </head>
 <body>
- 
-  <audio controls autoplay>
-    <source src="music files/funny song.mp3" type="audio/mpeg"></source>
+  <audio id="bread">
+    <source src="smack.wav" type="audio/mp3"></source>
+  </audio>
+ <center>
+
+  <audio controls autoplay >
+    <source src="music files/funny song.mp3" type="audio/mpeg" ></source>
    </audio>
+  </center>
 
   <canvas id="pongCanvas" width="800" height="400"></canvas>
   
@@ -54,10 +59,12 @@
     
     //loads in everything before doing any javascript even though thats kinda already done with the
 //script tag but whatever
-  document.addEventListener("DOMContentLoaded", function() {
 
-  })
+//  alert("all values of x loaded")
 
+  //document.addEventListener("DOMContentLoaded", function() {
+
+  
   function update_text() {
     var input_field = document.getElementById("text_input");
     var new_text = input_field.value;
@@ -197,6 +204,7 @@
         ball.y < paddle.y + paddle.height
       ) {
         ball.dx = -ball.dx;
+        
         //insert sound effect
       }
 
@@ -207,7 +215,9 @@
         ball.y > opponent.y &&
         ball.y < opponent.y + opponent.height
       ) {
+        document.getElementById("bread").play();
         ball.dx = -ball.dx;
+        
         //insert sound effect
       }
 
@@ -219,6 +229,7 @@
       } else if (ball.x > canvas.width) {
         scorePlayer++;
         resetBall();
+        
         //insert sound effect
       }
 
