@@ -43,9 +43,11 @@
   </style>
 </head>
 <body>
-  <audio id="bread">
-    <source src="smack.wav" type="audio/mp3"></source>
+  <audio id="bread" preload>
+    <source src="impact.mp3" type="audio/mp3"></source>
   </audio>
+
+
  <center>
 
   <audio controls autoplay >
@@ -57,6 +59,26 @@
   
   <script>
     
+    //another test format for playing sfx
+
+    // function gun_bang() {
+    //   var audio = document.createElement("audio");
+    //   audio.src = "boom.wav";
+    //   audio.addEventListener("ended", function() {
+    //     document.removeChild(this);
+    //     }, false);
+    //   audio.play();
+    //   }
+
+
+
+
+
+
+
+
+
+
     //loads in everything before doing any javascript even though thats kinda already done with the
 //script tag but whatever
 
@@ -204,6 +226,7 @@
         ball.y < paddle.y + paddle.height
       ) {
         document.getElementById("bread").play();
+        
         ball.dx = -ball.dx;
         
         //insert sound effect
