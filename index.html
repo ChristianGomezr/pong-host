@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   
@@ -51,9 +51,16 @@
 
 
   <audio id="bread" preload>
-    <source src="crit.mp3" type="audio/mp3"></source>
+    <source src="sfx/tmp.mp3" type="audio/mp3"></source>
   </audio>
 
+  <audio id="die" preload>
+    <source src="sfx/pan.mp3" type="audio/mp3"></source>
+  </audio>
+
+  <audio id="bounce" preload>
+    <source src="sfx/hi.mp3" type="audio/mp3"></source>
+  </audio>
 
  <center>
 
@@ -229,6 +236,7 @@ document.getElementById("startButton").addEventListener("click", startGame)
       if (ball.y + ball.dy < ball.radius || ball.y + ball.dy > 
       canvas.height - ball.radius) {
       ball.dy = -ball.dy;
+      document.getElementById("bounce").play();
       //this can have a sound effect right here some
       }
 
@@ -265,10 +273,12 @@ document.getElementById("startButton").addEventListener("click", startGame)
       // Score a point if the ball goes off the screen
       if (ball.x < 0) {
         scoreOpponent++;
+        document.getElementById("die").play();
         resetBall();
         //insert sound effect
       } else if (ball.x > canvas.width) {
         scorePlayer++;
+        document.getElementById("die").play();
         resetBall();
         
         //insert sound effect
